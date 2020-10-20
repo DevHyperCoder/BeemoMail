@@ -1,24 +1,22 @@
 {% extends "mail/layout.html" %}
-
+{%load static %}
 {% block body %}
 
-    <h2>Login</h2>
+<link rel="stylesheet" href="{% static 'mail/login.css' %}">
+<h2>Login</h2>
 
-    {% if message %}
-        <div>{{ message }}</div>
-    {% endif %}
+{% if message %}
+<div>{{ message }}</div>
+{% endif %}
 
-    <form action="{% url 'login' %}" method="post">
-        {% csrf_token %}
-        <div class="form-group">
-            <input autofocus class="form-control" type="email" name="email" placeholder="Email">
-        </div>
-        <div class="form-group">
-            <input class="form-control" type="password" name="password" placeholder="Password">
-        </div>
-        <input class="btn btn-primary" type="submit" value="Login">
-    </form>
+<form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    <input name="email" type="email" placeholder="Email">
+    <input name="password" type="password" placeholder="Password">
+    <button type="submit">Sign In</button>
 
-    Don't have an account? <a href="{% url 'register' %}">Register here.</a>
+</form>
+
+Don't have an account? <a href="{% url 'register' %}">Register here.</a>
 
 {% endblock %}
