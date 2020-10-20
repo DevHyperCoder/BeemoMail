@@ -1,6 +1,288 @@
-textarea {
-    min-height: 400px;
+:root {
+  --background: #bcbcf9;
+  --background-dark: #4949a9;
+  --white: #f5f5f5;
+  --background-extra-dark: #373782;
+  --font-color: #c8c8f1;
+  --background-light: #5857a5;
+  --purple-white: #adade0;
 }
-body{
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
   font-family: "Montserrat", sans-serif;
 }
+
+.container {
+  width: 90%;
+  height: 90%;
+  display: flex;
+}
+
+aside {
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+  justify-content: space-around;
+  background-color: var(--background-extra-dark);
+  border-radius: 30px 0px 0px 30px;
+}
+
+aside :last-child {
+  padding-bottom: 1rem;
+}
+.svg-btn p {
+  font-weight: 700;
+}
+.email-view {
+  border-radius: 0px 30px 30px 0px;
+}
+ul {
+  list-style: none;
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.email-view,
+.email-list {
+  flex: 50%;
+}
+
+.email-list {
+  background-color: var(--background-dark);
+}
+
+.email-view {
+  background-color: var(--white);
+}
+.svg-btn {
+  text-align: center;
+}
+.svg-btn p {
+  color: var(--font-color);
+}
+
+#compose {
+  border-radius: 45px 45px 45px 45px;
+  background-color: var(--background-light);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  justify-content: space-evenly;
+}
+
+#compose svg p {
+  flex: 50%;
+}
+#compose p {
+  margin: 0;
+  height: 1.4rem;
+  font-size: 1.4rem;
+  margin-left: 0.2rem;
+  margin-right: .5ch;
+}
+.svg-btn:hover {
+  background-color: var(--background-light);
+}
+
+#search-form {
+  background-color: #383891;
+  color: var(--purple-white);
+  display: flex;
+  padding: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+#search-form input {
+  height: 100%;
+  color: var(--purple-white);
+  font-size: 2rem;
+  background-color: inherit;
+  border: none;
+  flex: 80%;
+  outline: none;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+#search-form button {
+  background-color: inherit;
+  border: none;
+}
+
+#search-form svg {
+  width: 30px;
+  height: 30px;
+}
+
+.email-list h1 {
+  color: white;
+}
+#heading {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+#h-80 {
+  max-height: 75%;
+  min-height: 0;
+  overflow: auto;
+  flex: 1;
+  padding-right: 10px;
+}
+
+#center {
+  height: 100%;
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.cards :first-child {
+  margin-top: 0;
+}
+.email-card {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: white;
+  margin-top: 1rem;
+  background-color: var(--background-extra-dark);
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.email.card h1 {
+  font-weight: 600;
+}
+
+.email-card #content {
+  font-weight: 300;
+}
+
+.email-card #subject {
+  font-weight: 400;
+}
+
+.email-card * {
+  flex: 50%;
+}
+
+.white-bg {
+  background-color: white;
+  color: black;
+}
+
+.email-article {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.email-article * {
+  width: 100%;
+}
+.bs {
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 1ch;
+  margin-top: 2rem;
+  border-radius: 10px;
+  color:white;
+}
+
+.timestamp {
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+.email-card :first-child *{
+  margin-bottom: 10px;
+
+}
+#email-text {
+  width: 100%;
+  height: 20rem;
+  resize: none;
+  border: none;
+  padding-right: 15px;
+  outline: none;
+  font-weight: 400;
+  scrollbar-color: var(--background-dark) var(--font-color);
+  scrollbar-width: 9px;
+  scrollbar-arrow-color: white;
+ font-weight: 400;
+  font-size: 2.3rem;
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+.btn-container {
+  margin-top: 1.5rem;
+}
+
+.btn-container * {
+  margin-right: 3rem;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 20px;
+  background-color: var(--font-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--background-extra-dark);
+  border-radius: 20px;
+}
+
+#reply-btn,
+#forward-btn {
+  background-color: #1d1d51;
+  padding: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  border-radius: 10px;
+  color: white;
+  font-weight: 700;
+  border: none;
+  outline: none;
+  font-size: 1.5rem;
+}
+
+#forward-btn {
+  background-color: white;
+  color: var(--background-extra-dark);
+}
+
+button{
+  outline:none;
+}
+
+
+
+

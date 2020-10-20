@@ -2,12 +2,119 @@
 {% load static %}
 
 {% block body %}
-    <h2>{{ request.user.email }}</h2>
+<link rel="stylesheet" href="{% static 'mail/styles.css' %}">
+    
+    <div class="container">
 
-    <button class="btn btn-sm btn-outline-primary" id="inbox">Inbox</button>
-    <button class="btn btn-sm btn-outline-primary" id="compose">Compose</button>
-    <button class="btn btn-sm btn-outline-primary" id="sent">Sent</button>
-    <button class="btn btn-sm btn-outline-primary" id="archived">Archived</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <aside>
+
+            <div id="compose"  class="svg-btn">
+                <svg  width="20%" height="50px" viewBox="0 0 67 67" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M36.6667 16.6667H30V30H16.6667V36.6667H30V50H36.6667V36.6667H50V30H36.6667V16.6667ZM33.3333 0C14.9333 0 0 14.9333 0 33.3333C0 51.7333 14.9333 66.6667 33.3333 66.6667C51.7333 66.6667 66.6667 51.7333 66.6667 33.3333C66.6667 14.9333 51.7333 0 33.3333 0ZM33.3333 60C18.6333 60 6.66667 48.0333 6.66667 33.3333C6.66667 18.6333 18.6333 6.66667 33.3333 6.66667C48.0333 6.66667 60 18.6333 60 33.3333C60 48.0333 48.0333 60 33.3333 60Z"
+                        fill="#2C2C6C" />
+                </svg>
+
+                <p>Compose</p>
+            </div>
+
+
+            <div id="inbox"class="svg-btn">
+                <svg  width="20%" height="50px" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M71.1111 0H8.88889C4 0 0 4 0 8.88889V40C0 44.8889 4 48.8889 8.88889 48.8889H71.1111C76 48.8889 80 44.8889 80 40V8.88889C80 4 76 0 71.1111 0ZM71.1111 26.6667H53.3333C53.3333 33.8667 47.2 40 40 40C32.8 40 26.6667 33.8667 26.6667 26.6667H8.88889V8.88889H71.1111V26.6667ZM53.3333 57.7778H80V71.1111C80 76 76 80 71.1111 80H8.88889C4 80 0 76 0 71.1111V57.7778H26.6667C26.6667 65.1556 32.6222 71.1111 40 71.1111C47.3778 71.1111 53.3333 65.1556 53.3333 57.7778Z"
+                        fill="#C8C8F1" />
+                </svg>
+                <p>Inbox</p>
+            </div>
+
+            <div  id="sent"class="svg-btn">
+                <svg width="20%" height="50px" viewBox="0 0 112 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M45.6648 111.32L88.5251 32.8542L0.0312896 45.6118L17.7464 71.1868L69.7513 45.8923L27.8871 85.7886L45.6648 111.32Z"
+                        fill="#C8C8F1" />
+                </svg>
+
+                <p>Sent</p>
+            </div>
+
+            <div id="archived" class="svg-btn">
+                <svg  width="20%" height="50px" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M40 64.2947L64.72 80L58.16 50.4L80 30.4842L51.24 27.9158L40 0L28.76 27.9158L0 30.4842L21.84 50.4L15.28 80L40 64.2947Z"
+                        fill="#C8C8F1" />
+                </svg>
+
+                <p>Archived</p>
+            </div>
+            <div class="svg-btn">
+                <svg width="20%" height="50px" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M71.1111 0H8.88889C4 0 0 4 0 8.88889V40C0 44.8889 4 48.8889 8.88889 48.8889H71.1111C76 48.8889 80 44.8889 80 40V8.88889C80 4 76 0 71.1111 0ZM71.1111 26.6667H53.3333C53.3333 33.8667 47.2 40 40 40C32.8 40 26.6667 33.8667 26.6667 26.6667H8.88889V8.88889H71.1111V26.6667ZM53.3333 57.7778H80V71.1111C80 76 76 80 71.1111 80H8.88889C4 80 0 76 0 71.1111V57.7778H26.6667C26.6667 65.1556 32.6222 71.1111 40 71.1111C47.3778 71.1111 53.3333 65.1556 53.3333 57.7778Z"
+                        fill="#C8C8F1" />
+                </svg>
+                <p>Logout</p>
+            </div>
+
+
+        </aside>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>{{ request.user.email }}</h2>
+
     <a class="btn btn-sm btn-outline-primary" href="{% url 'logout' %}">Log Out</a>
     <hr>
 
@@ -29,6 +136,7 @@
             <textarea class="form-control" id="compose-body" placeholder="Body"></textarea>
             <input type="submit" class="btn btn-primary"/>
         </form>
+    </div>
     </div>
 {% endblock %}
 
