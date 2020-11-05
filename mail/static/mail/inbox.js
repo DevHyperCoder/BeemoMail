@@ -17,7 +17,9 @@ function compose_email() {
   // Show compose view and hide other views
 
   // Get the div where the id is emails-view, set the display (think of CSS display property) to none
-  document.querySelector('#emails-view').style.display = 'none';
+  document.getElementById('emails-view').style.display = 'none';
+
+document.getElementsByClassName('email-list')[0].style.display = 'none';
 
   // Get the div where the id is compose-view, set the display (think of CSS display property) to block
   document.querySelector('#compose-view').style.display = 'block';
@@ -60,6 +62,7 @@ async function createEmail() {
 // Load Mailbox function
 async function load_mailbox(mailbox) {
 
+document.getElementsByClassName('email-list')[0].style.display = 'block';
   // Put the mailbox name in localstorage
   localStorage.setItem("mailbox_name", mailbox);
 
@@ -80,8 +83,6 @@ async function load_mailbox(mailbox) {
   // If first ERmail actually exists then run the code below
   if (firstEmail) {
 
-    //TODO fix
-
     // Make the email read
     await fetch(`/emails/${firstEmail.id}`, {
       method: 'PUT',
@@ -89,7 +90,6 @@ async function load_mailbox(mailbox) {
         read: true
       })
     })
-
 
     // Set the subject, sender and the email-text
     document.getElementById("subject").textContent = firstEmail.subject
@@ -102,14 +102,19 @@ async function load_mailbox(mailbox) {
 
     // Set archive status on the button
     const archiveButton = document.getElementById("archive-btn")
-    archiveButton.style.display = "block"
+    const unArchiveButton = document.getElementById("unarchive-btn")
+
+    // hide both btns
+    archiveButton.style.display = "none"
+    unArchiveButton.style.display = "none"
+
     if (firstEmail.archived) {
       // Email IS archived
-      archiveButton.textContent = "Un Archive"
+      unArchiveButton.style.display = "inline-block"
     }
     else {
       // Email IS NOT archived
-      archiveButton.textContent = "Archive"
+      archiveButton.style.display = "inline-block"
     }
 
     // Set the status to localStorage
@@ -193,18 +198,26 @@ async function load_mailbox(mailbox) {
       // Set the email ID to localstorage
       localStorage.setItem("emailID", json.id)
 
-      // Set archive status on the button
       const archiveButton = document.getElementById("archive-btn")
+      const unArchiveButton = document.getElementById("unarchive-btn")
 
-      archiveButton.style.display = "block"
+      // hide both btns
+      archiveButton.style.display = "none"
+      unArchiveButton.style.display = "none"
+
       if (json.archived) {
         // Email IS archived
-        archiveButton.textContent = "Un Archive"
+        unArchiveButton.style.display = "inline-block"
       }
       else {
         // Email IS NOT archived
-        archiveButton.textContent = "Archive"
+        console.log("i reach here");
+        archiveButton.style.display = "inline-block"
+        console.log((archiveButton));
       }
+
+
+
 
       // Set the status to localStorage
       localStorage.setItem("isArchived", json.archived)
@@ -243,6 +256,19 @@ async function onArchivePress() {
   // convert string to boolean
   const isArchived = (localStorage.getItem("isArchived") === 'true')
 
+
+  document.getElementById("unarchive-btn").style.display = "none"
+  document.getElementById("archive-btn").style.display = "none"
+
+  if (isArchived) {
+    // SHow unarchive btn
+    document.getElementById("unarchive-btn").style.display = "inline-block"
+  }
+  else {
+    // Show archive btn
+    document.getElementById("archive-btn").style.display = "inline-block"
+  }
+
   // Archive or UnArchive the email
   await fetch(`/emails/${emailIDToArchive}`, {
     method: 'PUT',
@@ -262,14 +288,14 @@ async function onReply() {
   const response = await fetch(`/emails/${emailID}`)
   const json = await response.json()
 
-console.log(json);
+  console.log(json);
 
   //Fill in the fields with email contents
   document.getElementById('recepients').textContent = json.sender;
   document.getElementById('compose-subject').textContent = "Re: " + json.subject;
-document.getElementsByClassName("compose-textarea")[0].value=
-  `On ${json.timestamp} ${json.sender} wrote, ${json.body}`;
- 
+  document.getElementsByClassName("compose-textarea")[0].value =
+    `On ${json.timestamp} ${json.sender} wrote, ${json.body}`;
+
 }
 
 // Store email id in localstorage

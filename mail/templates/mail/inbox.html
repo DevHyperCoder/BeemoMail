@@ -104,24 +104,31 @@
 
 
                 </article>
+                
+                <div id="email-control">
+                    <!-- Click this to archive -->
+                    <svg onclick="onArchivePress()" id="archive-btn" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24" fill="black" width="3rem" height="3rem">
+                        <path d="M0 0h24v24H0V0z" fill="none" />
+                        <path
+                            d="M12 7.13l.97 2.29.47 1.11 1.2.1 2.47.21-1.88 1.63-.91.79.27 1.18.56 2.41-2.12-1.28-1.03-.64-1.03.62-2.12 1.28.56-2.41.27-1.18-.91-.79-1.88-1.63 2.47-.21 1.2-.1.47-1.11.97-2.27M12 2L9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2z" />
+                    </svg>
 
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="3rem" height="3rem">
-                    <path d="M0 0h24v24H0V0z" fill="none" />
-                    <path
-                        d="M12 7.13l.97 2.29.47 1.11 1.2.1 2.47.21-1.88 1.63-.91.79.27 1.18.56 2.41-2.12-1.28-1.03-.64-1.03.62-2.12 1.28.56-2.41.27-1.18-.91-.79-1.88-1.63 2.47-.21 1.2-.1.47-1.11.97-2.27M12 2L9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2z" />
-                </svg>
+                    <!-- Click this to un archive -->
+                    <svg onclick="onArchivePress()" id="unarchive-btn" style="display:none;" width="2.5rem"
+                        height="2.5rem" viewBox="0 0 80 80" fill="#1D1D51" xmlns="http://www.w3.org/2000/svg">
 
-                <svg width="2.5rem" height="2.5rem" viewBox="0 0 80 80" fill="#1D1D51" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M40 64.2947L64.72 80L58.16 50.4L80 30.4842L51.24 27.9158L40 0L28.76 27.9158L0 30.4842L21.84 50.4L15.28 80L40 64.2947Z"
-                        fill="#1d1d51" />
-                </svg>
+                        <path
+                            d="M40 64.2947L64.72 80L58.16 50.4L80 30.4842L51.24 27.9158L40 0L28.76 27.9158L0 30.4842L21.84 50.4L15.28 80L40 64.2947Z"
+                            fill="#1d1d51" />
+                    </svg>
 
-                <button onclick="onArchivePress()" id="archive-btn">archive</button>
+                    <!-- <button onclick="onArchivePress()" id="archive-btn">archive</button> -->
 
 
-                <button id="forward-btn" onclick="onReadPress()">Un read</button>
-                <button id="reply-btn" onclick="onReply()">Reply</button>
+                    <button id="forward-btn" onclick="onReadPress()">Mark Unread</button>
+                    <button id="reply-btn" onclick="onReply()">Reply</button>
+                </div>
             </div>
             <div id="compose-view" style="max-width: 100%;">
                 <article class="email-article bs">
