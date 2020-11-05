@@ -224,6 +224,7 @@ ul {
   margin-bottom: 10px;
 
 }
+
 #email-text {
   width: 100%;
   height: 20rem;
@@ -275,14 +276,36 @@ ul {
 }
 
 #forward-btn {
-  background-color: white;
-  color: var(--background-extra-dark);
-}
+  background-color: var(--background);
 
+  color: #1d1d51;
+}
+#heading{
+  text-transform: capitalize;
+}
 button{
   outline:none;
 }
+#email-text{
+  padding-left: 1rem;
+}
+::placeholder{
+  color: var(--purple-white);
+}
 
+::-webkit-input-placeholder {
+  color: var(--purple-white);
+}
 
+::-moz-placeholder {
+  color: var(--purple-white);
+}
 
+::-ms-placeholder {
+  color: var(--purple-white);
+}
+
+::placeholder {
+  color: var(--purple-white);
+}
 

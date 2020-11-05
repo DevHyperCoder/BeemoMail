@@ -3,143 +3,176 @@
 
 {% block body %}
 <link rel="stylesheet" href="{% static 'mail/styles.css' %}">
-    
-    <div class="container">
+
+<div class="container">
+
+    <aside>
+
+        <div id="compose" class="svg-btn">
+            <svg width="20%" height="50px" viewBox="0 0 67 67" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M36.6667 16.6667H30V30H16.6667V36.6667H30V50H36.6667V36.6667H50V30H36.6667V16.6667ZM33.3333 0C14.9333 0 0 14.9333 0 33.3333C0 51.7333 14.9333 66.6667 33.3333 66.6667C51.7333 66.6667 66.6667 51.7333 66.6667 33.3333C66.6667 14.9333 51.7333 0 33.3333 0ZM33.3333 60C18.6333 60 6.66667 48.0333 6.66667 33.3333C6.66667 18.6333 18.6333 6.66667 33.3333 6.66667C48.0333 6.66667 60 18.6333 60 33.3333C60 48.0333 48.0333 60 33.3333 60Z"
+                    fill="#2C2C6C" />
+            </svg>
+
+            <p>Compose</p>
+        </div>
+
+        <div id="inbox" class="svg-btn">
+            <svg width="20%" height="50px" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M71.1111 0H8.88889C4 0 0 4 0 8.88889V40C0 44.8889 4 48.8889 8.88889 48.8889H71.1111C76 48.8889 80 44.8889 80 40V8.88889C80 4 76 0 71.1111 0ZM71.1111 26.6667H53.3333C53.3333 33.8667 47.2 40 40 40C32.8 40 26.6667 33.8667 26.6667 26.6667H8.88889V8.88889H71.1111V26.6667ZM53.3333 57.7778H80V71.1111C80 76 76 80 71.1111 80H8.88889C4 80 0 76 0 71.1111V57.7778H26.6667C26.6667 65.1556 32.6222 71.1111 40 71.1111C47.3778 71.1111 53.3333 65.1556 53.3333 57.7778Z"
+                    fill="#C8C8F1" />
+            </svg>
+            <p>Inbox</p>
+        </div>
+
+        <div id="sent" class="svg-btn">
+            <svg width="20%" height="50px" viewBox="0 0 112 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M45.6648 111.32L88.5251 32.8542L0.0312896 45.6118L17.7464 71.1868L69.7513 45.8923L27.8871 85.7886L45.6648 111.32Z"
+                    fill="#C8C8F1" />
+            </svg>
+
+            <p>Sent</p>
+        </div>
+
+        <div id="archived" class="svg-btn">
+            <svg width="20%" height="50px" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M40 64.2947L64.72 80L58.16 50.4L80 30.4842L51.24 27.9158L40 0L28.76 27.9158L0 30.4842L21.84 50.4L15.28 80L40 64.2947Z"
+                    fill="#C8C8F1" />
+            </svg>
+
+            <p>Archived</p>
+        </div>
+
+        <div class="svg-btn">
+            <svg width="20%" height="50px" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M71.1111 0H8.88889C4 0 0 4 0 8.88889V40C0 44.8889 4 48.8889 8.88889 48.8889H71.1111C76 48.8889 80 44.8889 80 40V8.88889C80 4 76 0 71.1111 0ZM71.1111 26.6667H53.3333C53.3333 33.8667 47.2 40 40 40C32.8 40 26.6667 33.8667 26.6667 26.6667H8.88889V8.88889H71.1111V26.6667ZM53.3333 57.7778H80V71.1111C80 76 76 80 71.1111 80H8.88889C4 80 0 76 0 71.1111V57.7778H26.6667C26.6667 65.1556 32.6222 71.1111 40 71.1111C47.3778 71.1111 53.3333 65.1556 53.3333 57.7778Z"
+                    fill="#C8C8F1" />
+            </svg>
+            <p>Logout</p>
+        </div>
+
+    </aside>
+
+    <div class="wrapper">
+
+        <div class="email-list">
+            <div id="center">
+                <form id="search-form" action="" method="get">
+                    <input type="text" name="search" id="search-input" placeholder="Search">
+                    <button type="submit">
+                        <svg viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M26.0417 22.9167H24.3958L23.8125 22.3542C25.8542 19.9792 27.0833 16.8958 27.0833 13.5417C27.0833 6.0625 21.0208 0 13.5417 0C6.0625 0 0 6.0625 0 13.5417C0 21.0208 6.0625 27.0833 13.5417 27.0833C16.8958 27.0833 19.9792 25.8542 22.3542 23.8125L22.9167 24.3958V26.0417L33.3333 36.4375L36.4375 33.3333L26.0417 22.9167ZM13.5417 22.9167C8.35417 22.9167 4.16667 18.7292 4.16667 13.5417C4.16667 8.35417 8.35417 4.16667 13.5417 4.16667C18.7292 4.16667 22.9167 8.35417 22.9167 13.5417C22.9167 18.7292 18.7292 22.9167 13.5417 22.9167Z"
+                                fill="#ADADE0" />
+                        </svg>
+                    </button>
+
+                </form>
+
+                <div id="h-80">
+                    <h1 id="heading">Inbox</h1>
+                    <div class="cards">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="email-view">
+
+            <div id="emails-view">
+                <article class="email-article bs">
+                    <div class="email-card white-bg">
+                        <div class="">
+                            <h1 id="sender" style="font-weight: 700; font-size: 3rem; color: #1B1B37;">sender</h1>
+                            <p id="subject" style="font-weight:600 ; font-size: 2.2rem;">subject</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <p class="timestamp">aug 10</p>
+                        </div>
+                    </div>
+                    <div style=" margin-top: 2rem;">
+                        <textarea readonly="false" name="" id="email-text">
+                            Cillum aute mollit et in. Amet magna nulla nostrud laboris nostrud amet. Officia magna cupidatat dolore dolor nulla incididunt voluptate et aliqua. Velit cupidatat est elit proident sunt Lorem culpa occaecat nulla. Ea non velit aute pariatur pariatur ea consequat cillum Lorem ex consequat.                        </textarea>
+                    </div>
 
 
+                </article>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <aside>
-
-            <div id="compose"  class="svg-btn">
-                <svg  width="20%" height="50px" viewBox="0 0 67 67" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="3rem" height="3rem">
+                    <path d="M0 0h24v24H0V0z" fill="none" />
                     <path
-                        d="M36.6667 16.6667H30V30H16.6667V36.6667H30V50H36.6667V36.6667H50V30H36.6667V16.6667ZM33.3333 0C14.9333 0 0 14.9333 0 33.3333C0 51.7333 14.9333 66.6667 33.3333 66.6667C51.7333 66.6667 66.6667 51.7333 66.6667 33.3333C66.6667 14.9333 51.7333 0 33.3333 0ZM33.3333 60C18.6333 60 6.66667 48.0333 6.66667 33.3333C6.66667 18.6333 18.6333 6.66667 33.3333 6.66667C48.0333 6.66667 60 18.6333 60 33.3333C60 48.0333 48.0333 60 33.3333 60Z"
-                        fill="#2C2C6C" />
+                        d="M12 7.13l.97 2.29.47 1.11 1.2.1 2.47.21-1.88 1.63-.91.79.27 1.18.56 2.41-2.12-1.28-1.03-.64-1.03.62-2.12 1.28.56-2.41.27-1.18-.91-.79-1.88-1.63 2.47-.21 1.2-.1.47-1.11.97-2.27M12 2L9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2z" />
                 </svg>
 
-                <p>Compose</p>
-            </div>
-
-
-            <div id="inbox"class="svg-btn">
-                <svg  width="20%" height="50px" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M71.1111 0H8.88889C4 0 0 4 0 8.88889V40C0 44.8889 4 48.8889 8.88889 48.8889H71.1111C76 48.8889 80 44.8889 80 40V8.88889C80 4 76 0 71.1111 0ZM71.1111 26.6667H53.3333C53.3333 33.8667 47.2 40 40 40C32.8 40 26.6667 33.8667 26.6667 26.6667H8.88889V8.88889H71.1111V26.6667ZM53.3333 57.7778H80V71.1111C80 76 76 80 71.1111 80H8.88889C4 80 0 76 0 71.1111V57.7778H26.6667C26.6667 65.1556 32.6222 71.1111 40 71.1111C47.3778 71.1111 53.3333 65.1556 53.3333 57.7778Z"
-                        fill="#C8C8F1" />
-                </svg>
-                <p>Inbox</p>
-            </div>
-
-            <div  id="sent"class="svg-btn">
-                <svg width="20%" height="50px" viewBox="0 0 112 112" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M45.6648 111.32L88.5251 32.8542L0.0312896 45.6118L17.7464 71.1868L69.7513 45.8923L27.8871 85.7886L45.6648 111.32Z"
-                        fill="#C8C8F1" />
-                </svg>
-
-                <p>Sent</p>
-            </div>
-
-            <div id="archived" class="svg-btn">
-                <svg  width="20%" height="50px" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="2.5rem" height="2.5rem" viewBox="0 0 80 80" fill="#1D1D51" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M40 64.2947L64.72 80L58.16 50.4L80 30.4842L51.24 27.9158L40 0L28.76 27.9158L0 30.4842L21.84 50.4L15.28 80L40 64.2947Z"
-                        fill="#C8C8F1" />
+                        fill="#1d1d51" />
                 </svg>
 
-                <p>Archived</p>
+                <button onclick="onArchivePress()" id="archive-btn">archive</button>
+
+
+                <button id="forward-btn" onclick="onReadPress()">Un read</button>
+                <button id="reply-btn" onclick="onReply()">Reply</button>
             </div>
-            <div class="svg-btn">
-                <svg width="20%" height="50px" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M71.1111 0H8.88889C4 0 0 4 0 8.88889V40C0 44.8889 4 48.8889 8.88889 48.8889H71.1111C76 48.8889 80 44.8889 80 40V8.88889C80 4 76 0 71.1111 0ZM71.1111 26.6667H53.3333C53.3333 33.8667 47.2 40 40 40C32.8 40 26.6667 33.8667 26.6667 26.6667H8.88889V8.88889H71.1111V26.6667ZM53.3333 57.7778H80V71.1111C80 76 76 80 71.1111 80H8.88889C4 80 0 76 0 71.1111V57.7778H26.6667C26.6667 65.1556 32.6222 71.1111 40 71.1111C47.3778 71.1111 53.3333 65.1556 53.3333 57.7778Z"
-                        fill="#C8C8F1" />
-                </svg>
-                <p>Logout</p>
+            <div id="compose-view" style="max-width: 100%;">
+                <article class="email-article bs">
+                    <div class="email-card white-bg">
+                        <div class="">
+                            <h1 contenteditable="true" id="recepients"
+                                style="max-width: 30ch; height:1.7rem; overflow:auto; outline:none;  font-weight: 500; font-size: 1.5rem; color: #1B1B37;">
+                                Recepients</h1>
+                            <p contenteditable="true" id="compose-subject"
+                                style="max-width: 30ch; height:1.7rem; margin-top:0.4ch; overflow:auto; outline:none; font-weight:400; font-size: 1.5rem;">
+                                Subject</p>
+                        </div>
+                    </div>
+                    <div style=" margin-top: 2rem;">
+                        <textarea name="" class="compose-textarea" id="email-text"></textarea>
+                    </div>
+                </article>
+
+                <button onclick="createEmail()">Compose</button>
+                <p id="email-success"></p>
             </div>
 
-
-        </aside>
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2>{{ request.user.email }}</h2>
-
-    <a class="btn btn-sm btn-outline-primary" href="{% url 'logout' %}">Log Out</a>
-    <hr>
-
-    <div id="emails-view">
+        </div>
     </div>
+    <!-- 
+        <h2>{{ request.user.email }}</h2>
 
-    <div id="compose-view">
-        <h3>New Email</h3>
-        <form id="compose-form">
-            <div class="form-group">
-                From: <input disabled class="form-control" value="{{ request.user.email }}">
-            </div>
-            <div class="form-group">
-                To: <input id="compose-recipients" class="form-control">
-            </div>
-            <div class="form-group">
-                <input class="form-control" id="compose-subject" placeholder="Subject">
-            </div>
-            <textarea class="form-control" id="compose-body" placeholder="Body"></textarea>
-            <input type="submit" class="btn btn-primary"/>
-        </form>
-    </div>
-    </div>
+
+        <div id="emails-view">
+        </div>
+
+        <div id="compose-view">
+            <h3>New Email</h3>
+            <form id="compose-form">
+                <div class="form-group">
+                    From: <input disabled class="form-control" value="{{ request.user.email }}">
+                </div>
+                <div class="form-group">
+                    To: <input id="compose-recipients" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" id="compose-subject" placeholder="Subject">
+                </div>
+                <textarea class="form-control" id="compose-body" placeholder="Body"></textarea>
+                <input type="submit" class="btn btn-primary" />
+            </form>
+        </div> -->
+</div>
+</div>
 {% endblock %}
 
 {% block script %}
-    <script src="{% static 'mail/inbox.js' %}"></script>
+<script src="{% static 'mail/inbox.js' %}"></script>
 {% endblock %}
