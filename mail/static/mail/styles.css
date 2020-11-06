@@ -97,7 +97,7 @@ ul {
   height: 1.4rem;
   font-size: 1.4rem;
   margin-left: 0.2rem;
-  margin-right: .5ch;
+  margin-right: 0.5ch;
 }
 .svg-btn:hover {
   background-color: var(--background-light);
@@ -189,8 +189,12 @@ ul {
   font-weight: 400;
 }
 
-.email-card * {
-  flex: 50%;
+.email-card div {
+  flex: 10%;
+}
+
+.email-card :first-child {
+  flex: 90%;
 }
 
 .white-bg {
@@ -209,26 +213,31 @@ ul {
 .email-article * {
   width: 100%;
 }
+
+#email-control {
+  width: 90%;
+  margin: auto;
+}
+
 .bs {
   box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
   padding: 1ch;
   margin-top: 2rem;
   border-radius: 10px;
-  color:white;
+  color: white;
 }
 
 .timestamp {
   font-weight: 300;
   margin-bottom: 10px;
 }
-.email-card :first-child *{
+.email-card :first-child * {
   margin-bottom: 10px;
-
 }
 
 #email-text {
   width: 100%;
-  height: 28rem;
+  height: 23rem;
   resize: none;
   border: none;
   padding-right: 15px;
@@ -237,7 +246,7 @@ ul {
   scrollbar-color: var(--background-dark) var(--font-color);
   scrollbar-width: 9px;
   scrollbar-arrow-color: white;
- font-weight: 400;
+  font-weight: 400;
   font-size: 2.3rem;
 }
 
@@ -262,16 +271,17 @@ ul {
   border-radius: 20px;
 }
 
-#email-control{
- margin-top: 2rem;
- margin-bottom: 2rem;
-  display:flex;
-  justify-content: space-evenly;
+#email-control {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
 #reply-btn,
-#forward-btn {
+#forward-btn,
+#cn {
   background-color: #1d1d51;
   padding: 1rem;
   padding-left: 2rem;
@@ -289,16 +299,16 @@ ul {
 
   color: #1d1d51;
 }
-#heading{
+#heading {
   text-transform: capitalize;
 }
-button{
-  outline:none;
+button {
+  outline: none;
 }
-#email-text{
+#email-text {
   padding-left: 1rem;
 }
-::placeholder{
+::placeholder {
   color: var(--purple-white);
 }
 
@@ -318,3 +328,6 @@ button{
   color: var(--purple-white);
 }
 
+#compose p {
+  height: 2rem;
+}

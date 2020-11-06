@@ -3,7 +3,6 @@
 {% block body %}
 
 <link rel="stylesheet" href="{% static 'mail/login.css' %}">
-<h2>Login</h2>
 
 {% if message %}
 <div>{{ message }}</div>
@@ -11,12 +10,13 @@
 
 <form action="{% url 'login' %}" method="post">
     {% csrf_token %}
+<h2>Login</h2>
     <input name="email" type="email" placeholder="Email">
     <input name="password" type="password" placeholder="Password">
     <button type="submit">Sign In</button>
 
+<p>Don't have an account? <a href="{% url 'register' %}">Register here.</a></p>
 </form>
 
-Don't have an account? <a href="{% url 'register' %}">Register here.</a>
 
 {% endblock %}

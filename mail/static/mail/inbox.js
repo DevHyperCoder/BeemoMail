@@ -19,7 +19,7 @@ function compose_email() {
   // Get the div where the id is emails-view, set the display (think of CSS display property) to none
   document.getElementById('emails-view').style.display = 'none';
 
-document.getElementsByClassName('email-list')[0].style.display = 'none';
+  document.getElementsByClassName('email-list')[0].style.display = 'none';
 
   // Get the div where the id is compose-view, set the display (think of CSS display property) to block
   document.querySelector('#compose-view').style.display = 'block';
@@ -62,7 +62,7 @@ async function createEmail() {
 // Load Mailbox function
 async function load_mailbox(mailbox) {
 
-document.getElementsByClassName('email-list')[0].style.display = 'block';
+  document.getElementsByClassName('email-list')[0].style.display = 'block';
   // Put the mailbox name in localstorage
   localStorage.setItem("mailbox_name", mailbox);
 
@@ -101,24 +101,25 @@ document.getElementsByClassName('email-list')[0].style.display = 'block';
     localStorage.setItem("emailID", firstEmail.id)
 
     // Set archive status on the button
-    const archiveButton = document.getElementById("archive-btn")
-    const unArchiveButton = document.getElementById("unarchive-btn")
+    // TODO change this
+    // const archiveButton = document.getElementById("archive-btn")
+    // const unArchiveButton = document.getElementById("unarchive-btn")
 
-    // hide both btns
-    archiveButton.style.display = "none"
-    unArchiveButton.style.display = "none"
+    // // hide both btns
+    // archiveButton.style.display = "none"
+    // unArchiveButton.style.display = "none"
 
-    if (firstEmail.archived) {
-      // Email IS archived
-      unArchiveButton.style.display = "inline-block"
-    }
-    else {
-      // Email IS NOT archived
-      archiveButton.style.display = "inline-block"
-    }
+    // if (firstEmail.archived) {
+    //   // Email IS archived
+    //   unArchiveButton.style.display = "inline-block"
+    // }
+    // else {
+    //   // Email IS NOT archived
+    //   archiveButton.style.display = "inline-block"
+    // }
 
-    // Set the status to localStorage
-    localStorage.setItem("isArchived", firstEmail.archived)
+    // // Set the status to localStorage
+    // localStorage.setItem("isArchived", firstEmail.archived)
   }
 
   else {
@@ -129,8 +130,9 @@ document.getElementsByClassName('email-list')[0].style.display = 'block';
     document.getElementById("email-text").value = ""
     document.getElementsByClassName("timestamp")[0].textContent = ""
     // Set archive status on the button
-    const archiveButton = document.getElementById("archive-btn")
-    archiveButton.style.display = "none"
+    // TODO
+    // const archiveButton = document.getElementById("archive-btn")
+    // archiveButton.style.display = "none"
   }
 
   // Get the first div whose class is 'cards'
@@ -154,7 +156,7 @@ document.getElementsByClassName('email-list')[0].style.display = 'block';
 
     // Create a div and h1, set the text of h1 to sender of email
     const div1 = document.createElement("div") // div => <div></div>
-
+    
     const senderH1 = document.createElement("h1")
     if (jsonEmail.read) {
       senderH1.style.color = "#adade0"
@@ -165,12 +167,32 @@ document.getElementsByClassName('email-list')[0].style.display = 'block';
     const p = document.createElement("p")
     p.textContent = jsonEmail.body
 
+
     // Put the h1 and p inside the div
     div1.append(senderH1) // <div><h1>asdf</h1></div>
     div1.append(p) // <div><h1>asdf</h1><p>asdf</p></div>
 
     // Put the div inside the email card
     emailCard.append(div1)
+    emailCard.innerHTML += `
+    <div>
+    <svg onclick="onArchivePress(${jsonEmail.id})" id="archive-btn-${jsonEmail.id}" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24" fill="black" width="3rem" height="3rem">
+      <path d="M0 0h24v24H0V0z" fill="none" />
+      <path
+      fill="#adade0"
+        d="M12 7.13l.97 2.29.47 1.11 1.2.1 2.47.21-1.88 1.63-.91.79.27 1.18.56 2.41-2.12-1.28-1.03-.64-1.03.62-2.12 1.28.56-2.41.27-1.18-.91-.79-1.88-1.63 2.47-.21 1.2-.1.47-1.11.97-2.27M12 2L9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2z" />
+     </svg>
+
+    <!-- Click this to un archive -->
+    <svg onclick="onUnArchivePress(${jsonEmail.id})" id="unarchive-btn-${jsonEmail.id}" style="display:none;" width="2.5rem"
+      height="2.5rem" viewBox="0 0 80 80" fill="#adade0" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M40 64.2947L64.72 80L58.16 50.4L80 30.4842L51.24 27.9158L40 0L28.76 27.9158L0 30.4842L21.84 50.4L15.28 80L40 64.2947Z"
+          fill="#adade0" />
+    </svg>
+    </div>
+    `
 
     // Add a click event listener.. 
     // Basically will run this code when the email card is clicked
@@ -215,16 +237,28 @@ document.getElementsByClassName('email-list')[0].style.display = 'block';
         archiveButton.style.display = "inline-block"
         console.log((archiveButton));
       }
-
-
-
-
       // Set the status to localStorage
       localStorage.setItem("isArchived", json.archived)
     })
 
     cards.append(emailCard)
 
+
+    // Show or hide archive svg btns
+
+    const isArchived = jsonEmail.archived;
+
+    const archivebtn = document.getElementById(`archive-btn-${jsonEmail.id}`)
+    const unarchivebtn = document.getElementById(`unarchive-btn-${jsonEmail.id}`)
+
+    archivebtn.style.display = "none"
+    unarchivebtn.style.display = "none"
+
+    if (isArchived) {
+      unarchivebtn.style.display = "block"
+    } else {
+      archivebtn.style.display = "block"
+    }
   });
   console.log(cards)
 }
@@ -248,32 +282,25 @@ async function onReadPress() {
 }
 
 // Runs when the archive button is pressed
-async function onArchivePress() {
-  // Get the EMAIL ID from localStorage
-  const emailIDToArchive = localStorage.getItem("emailID")
-
-  // get the archived status from localstorage 
-  // convert string to boolean
-  const isArchived = (localStorage.getItem("isArchived") === 'true')
-
-
-  document.getElementById("unarchive-btn").style.display = "none"
-  document.getElementById("archive-btn").style.display = "none"
-
-  if (isArchived) {
-    // SHow unarchive btn
-    document.getElementById("unarchive-btn").style.display = "inline-block"
-  }
-  else {
-    // Show archive btn
-    document.getElementById("archive-btn").style.display = "inline-block"
-  }
+async function onArchivePress(emailIDToArchive) {
 
   // Archive or UnArchive the email
   await fetch(`/emails/${emailIDToArchive}`, {
     method: 'PUT',
     body: JSON.stringify({
-      archived: !isArchived
+      archived: true
+    })
+  })
+  load_mailbox(localStorage.getItem('mailbox_name'))
+}
+
+async function onUnArchivePress(emailIDToArchive) {
+
+  // Archive or UnArchive the email
+  await fetch(`/emails/${emailIDToArchive}`, {
+    method: 'PUT',
+    body: JSON.stringify({
+      archived: false
     })
   })
   load_mailbox(localStorage.getItem('mailbox_name'))
