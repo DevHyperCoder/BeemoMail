@@ -47,10 +47,10 @@
             <p>Archived</p>
         </div>
 
-        <div class="svg-btn">
-            <svg width="20%" height="50px" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div id="logout-btn" class="svg-btn">
+            <svg width="20%" height="50px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path
-                    d="M71.1111 0H8.88889C4 0 0 4 0 8.88889V40C0 44.8889 4 48.8889 8.88889 48.8889H71.1111C76 48.8889 80 44.8889 80 40V8.88889C80 4 76 0 71.1111 0ZM71.1111 26.6667H53.3333C53.3333 33.8667 47.2 40 40 40C32.8 40 26.6667 33.8667 26.6667 26.6667H8.88889V8.88889H71.1111V26.6667ZM53.3333 57.7778H80V71.1111C80 76 76 80 71.1111 80H8.88889C4 80 0 76 0 71.1111V57.7778H26.6667C26.6667 65.1556 32.6222 71.1111 40 71.1111C47.3778 71.1111 53.3333 65.1556 53.3333 57.7778Z"
+                    d="M4,12a1,1,0,0,0,1,1h7.59l-2.3,2.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l4-4a1,1,0,0,0,.21-.33,1,1,0,0,0,0-.76,1,1,0,0,0-.21-.33l-4-4a1,1,0,1,0-1.42,1.42L12.59,11H5A1,1,0,0,0,4,12ZM17,2H7A3,3,0,0,0,4,5V8A1,1,0,0,0,6,8V5A1,1,0,0,1,7,4H17a1,1,0,0,1,1,1V19a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V16a1,1,0,0,0-2,0v3a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V5A3,3,0,0,0,17,2Z"
                     fill="#C8C8F1" />
             </svg>
             <p>Logout</p>
@@ -89,11 +89,11 @@
             <div id="emails-view">
                 <article class="email-article bs">
                     <div class="email-card white-bg">
-                        <div class="">
+                        <div class="sender-subject">
                             <h1 id="sender" style="font-weight: 700; font-size: 3rem; color: #1B1B37;">sender</h1>
                             <p id="subject" style="font-weight:600 ; font-size: 2.2rem;">subject</p>
                         </div>
-                        <div style="text-align: right;">
+                        <div style="text-align: right; flex: 27%">
                             <p class="timestamp">aug 10</p>
                         </div>
                     </div>
@@ -104,7 +104,7 @@
 
 
                 </article>
-                
+
                 <div id="email-control">
                     <!-- Click this to archive
                     <svg onclick="onArchivePress()" id="archive-btn" xmlns="http://www.w3.org/2000/svg"
@@ -147,7 +147,7 @@
                     </div>
                 </article>
                 <div style="width:90%; margin:auto">
-            <button id="cn"  style="margin-top:2.5rem; float: right" onclick="createEmail()">Compose</button>
+                    <button id="cn" style="margin-top:2.5rem; float: right" onclick="createEmail()">Compose</button>
                 </div>
                 <p id="email-success"></p>
             </div>

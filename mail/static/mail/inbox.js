@@ -9,6 +9,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // By default, load the inbox
   load_mailbox('inbox');
+
+  // Get the logout btn and when clicked set the url to the logout 
+  // This will logout the current user
+  document.getElementById("logout-btn").addEventListener('click',
+    () => window.location.href = "/logout")
 });
 
 // Compose email function
@@ -49,14 +54,16 @@ async function createEmail() {
   // Get the response BACK from the server as JSON format
   const json = await response.json()
 
-  // FIXME add correct error handling
+  // Check for any errors and alert user accordingly
+  if (json.error) {
+    alert(json.error)
+  }
+  // We dont have any error
+  else {
+    alert(`Sent email to ${recipients}`)
+    load_mailbox('sent')
+  }
 
-  load_mailbox('sent')
-
-
-  // TODO make it better
-  //Right now you would see [Object]
-  document.getElementById("email-success").textContent = json
 }
 
 // Load Mailbox function
@@ -156,7 +163,7 @@ async function load_mailbox(mailbox) {
 
     // Create a div and h1, set the text of h1 to sender of email
     const div1 = document.createElement("div") // div => <div></div>
-    
+
     const senderH1 = document.createElement("h1")
     if (jsonEmail.read) {
       senderH1.style.color = "#adade0"

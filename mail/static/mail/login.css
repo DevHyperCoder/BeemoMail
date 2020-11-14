@@ -42,10 +42,15 @@ input {
   margin-top: 14%;
 }
 
+h2 {
+  margin-left: 80px;
+  font-size: 2rem;
+}
 
-h2{margin-left: 80px; font-size: 2rem;}
-
- p{width: 100%;text-align: center;}
+p {
+  width: 100%;
+  text-align: center;
+}
 .container button {
   background-image: linear-gradient(#b56fa9, #435cc0);
   text-align: center;

@@ -230,6 +230,7 @@ ul {
 .timestamp {
   font-weight: 300;
   margin-bottom: 10px;
+line-height: 2.8ch;
 }
 .email-card :first-child * {
   margin-bottom: 10px;
@@ -330,4 +331,15 @@ button {
 
 #compose p {
   height: 2rem;
+}
+#subject {
+  max-width:100%;
+  overflow-x: auto;
+}
+.sender-subject{
+  max-width: 80%;
+  padding-left:1ch
+}
+aside{
+  min-width:15%;
 }
